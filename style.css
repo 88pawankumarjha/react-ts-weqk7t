@@ -2,6 +2,10 @@ h1,
 p {
   font-family: Lato;
 }
-/* .visualization {
-  background-color: black;
-} */
+.hoc-function {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 3vh;
+}
