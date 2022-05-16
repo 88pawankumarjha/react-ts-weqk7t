@@ -1,6 +1,7 @@
 import './DarkMode.css';
 import * as React from 'react';
 import { ChangeEventHandler } from 'react';
+import nightTime from '../utils/timeUtils';
 
 const setDark = () => {
   localStorage.setItem('theme', 'dark');
@@ -17,12 +18,6 @@ const storedTheme = localStorage.getItem('theme');
 const prefersDark =
   window.matchMedia &&
   window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-const nightTime = () => {
-  let hrs = new Date().getHours();
-  if (hrs <= 4 && hrs >= 18) return true;
-  else return false;
-};
 
 const defaultDark =
   storedTheme === 'dark' || (storedTheme === null && prefersDark) || nightTime;
@@ -50,7 +45,7 @@ const DarkMode = () => {
           onChange={toggleTheme}
           defaultChecked={defaultDark}
         />
-        <div className="slider"></div>
+        <div className="slider round"></div>
       </label>
       <span>Night</span>
     </div>
