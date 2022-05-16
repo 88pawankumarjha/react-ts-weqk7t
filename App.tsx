@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import DarkMode from './components/DarkMode';
 import Visualization from './components/Visualization';
 import './style.css';
@@ -7,7 +8,7 @@ const Checkout = ({ name }) => (
   <h1 className="hoc-function">Check out the {name}!</h1>
 );
 // Take in a component as argument WrappedComponent
-function simpleHOC(WrappedComponent) {
+function HOC(WrappedComponent) {
   // And return a new anonymous component
   return class extends React.Component {
     render() {
@@ -15,9 +16,12 @@ function simpleHOC(WrappedComponent) {
     }
   };
 }
-const NewComponent = simpleHOC(Checkout);
+const NewComponent = HOC(Checkout);
 
 export default function App() {
+  useEffect(() => {
+    document.title = 'React TS - Pawan';
+  }, []);
   return (
     <div>
       {/* https://github.com/recharts/recharts */}

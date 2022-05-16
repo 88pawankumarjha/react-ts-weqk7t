@@ -1,0 +1,5 @@
+.visualization-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3vh;
+}

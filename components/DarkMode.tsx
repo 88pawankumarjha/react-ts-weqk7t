@@ -18,8 +18,14 @@ const prefersDark =
   window.matchMedia &&
   window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+const nightTime = () => {
+  let hrs = new Date().getHours();
+  if (hrs <= 4 && hrs >= 18) return true;
+  else return false;
+};
+
 const defaultDark =
-  storedTheme === 'dark' || (storedTheme === null && prefersDark);
+  storedTheme === 'dark' || (storedTheme === null && prefersDark) || nightTime;
 
 if (defaultDark) {
   setDark();
@@ -36,7 +42,7 @@ const toggleTheme: ChangeEventHandler<HTMLInputElement> = (e) => {
 const DarkMode = () => {
   return (
     <div className="toggle-theme-wrapper">
-      <span>☀️</span>
+      <span>Day</span>
       <label className="toggle-theme" htmlFor="checkbox">
         <input
           type="checkbox"
@@ -44,9 +50,9 @@ const DarkMode = () => {
           onChange={toggleTheme}
           defaultChecked={defaultDark}
         />
-        <div className="slider round"></div>
+        <div className="slider"></div>
       </label>
-      <span>🌒</span>
+      <span>Night</span>
     </div>
   );
 };
